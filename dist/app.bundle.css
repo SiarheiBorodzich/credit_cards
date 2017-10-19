@@ -1,0 +1,332 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type="number"] {
+  -moz-appearance: textfield; }
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+html, body {
+  box-sizing: border-box;
+  color: #333333;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  line-height: 1; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+a, a:hover {
+  text-decoration: none;
+  color: #3493E6; }
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 2rem; }
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem; }
+
+.cc-main-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; }
+
+.cc-split-container {
+  flex: 1;
+  text-align: center; }
+
+.cc-scrollable {
+  overflow-y: auto;
+  border-right: 1px dotted #787276; }
+
+.cc-column-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+@media only screen and (max-width: 50rem) {
+  .cc-main-container {
+    flex-direction: column; }
+  .cc-scrollable {
+    border-right: none;
+    border-bottom: 1px dotted #787276; } }
+
+.cc-add-new-card-container {
+  margin-bottom: 2rem; }
+
+.cc-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 35rem; }
+
+.cc-input, .cc-textarea {
+  border: 1px solid #cccccc;
+  border-radius: 0.3rem;
+  color: #333333;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  outline: 0;
+  transition: border-color .2s ease; }
+  .cc-input:focus, .cc-textarea:focus {
+    border: 1px solid #787276; }
+
+.cc-input {
+  height: 4.5rem; }
+
+.cc-error {
+  border: 1px solid #ff4136; }
+
+.cc-textarea {
+  height: 7rem;
+  resize: none; }
+
+.cc-form-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem; }
+
+.cc-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem; }
+
+.cc-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase; }
+
+.cc-button-container {
+  display: flex;
+  justify-content: center; }
+
+.cc-button {
+  background: #3493E6;
+  border: none;
+  border-radius: 999rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  padding: 0 6rem;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  color: #fffefc;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background .2s ease; }
+  .cc-button:hover {
+    background: #197ace; }
+  .cc-button:disabled {
+    background: #787276;
+    cursor: default; }
+
+.cc-validation-message {
+  color: #ff4136;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  text-align: left; }
+
+@media only screen and (max-width: 50rem) {
+  .cc-form {
+    width: 25rem; }
+  .cc-textarea {
+    height: 5rem; }
+  .cc-input, .cc-button {
+    height: 3rem;
+    line-height: 3rem; } }
+
+.cc-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 1px solid #cccccc;
+  border-radius: 0.6rem;
+  max-width: 100%;
+  width: 35rem;
+  margin-bottom: 2rem;
+  padding: 1rem; }
+  .cc-card-container .cc-delete-card {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    font-weight: 100;
+    font-size: 2rem;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    background: #fffefc;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 1.4; }
+  .cc-card-container .cc-card-number {
+    font-size: 1.5rem; }
+  .cc-card-container .cc-card-comment {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%; }
+  .cc-card-container .cc-card {
+    margin: 2rem; }
+  .cc-card-container i {
+    font-style: italic; }
+
+.cc-empty-list {
+  font-size: 2rem;
+  color: #aaaaaa; }
+
+/*-------------------------------------*/
+.master-card {
+  font-family: "Droid Sans", Helvetica, sans-serif;
+  position: relative;
+  width: 6em;
+  font-size: 2rem;
+  line-height: 3.6em;
+  letter-spacing: -0.08em;
+  text-align: center;
+  font-weight: bold;
+  color: #fffefc; }
+  .master-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    border-radius: 50%;
+    width: 3.6em;
+    height: 3.6em;
+    z-index: -1;
+    background: linear-gradient(#fe9900 50%, #cd0001 50%);
+    background-size: 0.45em 0.45em;
+    box-shadow: 2.4em 0 0 0 #fe9900, 2.4em 0 0 0 #cd0001 inset; }
+
+/*-------------------------------------*/
+.visa {
+  position: relative;
+  width: 3em;
+  height: 1.8em;
+  background: white;
+  background: linear-gradient(#1b1d74 25%, transparent 25%, transparent 75%, #e59703 75%);
+  border: 0.05em solid #fff;
+  box-shadow: 0 0 0 0.05em #1b1d74;
+  font-size: 4rem;
+  line-height: 1.86em;
+  color: #1b1d74;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  vertical-align: top; }
+  .visa::before, .visa::after {
+    content: '';
+    display: inline-block;
+    width: 0.3em;
+    height: 0.3em;
+    position: absolute;
+    top: 30%;
+    right: 71%;
+    transform: skew(8.6deg); }
+  .visa::before {
+    background: #e59703;
+    border-radius: 0 25% 0 0;
+    box-shadow: 0.03em -0.03em 0 #fff; }
+  .visa::after {
+    background: white;
+    box-shadow: 0.16667em 0 0 #fff inset, 0.3em 0 0 #1b1d74 inset, -10px 0 0 #fff;
+    border-radius: 0 100% 0 0; }
+
+@media only screen and (max-width: 50rem) {
+  .cc-card-container {
+    width: 25rem; } }
+
+.cc-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9); }
+  .cc-overlay .cc-popup {
+    padding: 2rem;
+    background: #fffefc;
+    border-radius: 0.3rem;
+    width: 40%;
+    position: relative;
+    top: 35%;
+    margin: 0 auto;
+    transition: all 5s ease-in-out; }
+    .cc-overlay .cc-popup .cc-message {
+      font-size: 1.5rem;
+      margin: 2rem 0 4rem 0;
+      text-align: center; }
+      .cc-overlay .cc-popup .cc-message span {
+        color: #3493E6; }
+    .cc-overlay .cc-popup .cc-button-cancel {
+      background: #787276; }
+
+@media only screen and (max-width: 50rem) {
+  .cc-overlay .cc-popup {
+    width: 90%; }
+    .cc-overlay .cc-popup .cc-message {
+      margin: 2rem 0 2rem 0; }
+    .cc-overlay .cc-popup .cc-button {
+      margin: 1rem; }
+  .cc-overlay .cc-button-container {
+    flex-direction: column; } }

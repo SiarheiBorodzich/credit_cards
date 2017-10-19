@@ -1,0 +1,53 @@
+.cc-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .9);
+
+    .cc-popup {
+        padding: $spacing-double;
+        background: $white;
+        border-radius: $border-radius;
+        width: 40%;
+        position: relative;
+        top: 35%;
+        margin: 0 auto;
+        transition: all 5s ease-in-out;
+
+        .cc-message {
+            font-size: $font-medium;
+            margin: $spacing-double 0 $spacing-forth 0;
+            text-align: center;
+
+            span {
+                color: $color-brand-1;
+            }
+        }
+
+        .cc-button-cancel {
+            background: $grey-fossil;
+        }
+    }
+}
+
+@media only screen and (max-width: $media-small) {
+    .cc-overlay {
+        .cc-popup {
+            width: 90%;
+
+            .cc-message {
+                margin: 2rem 0 2rem 0;
+            }
+
+            .cc-button {
+                margin: $spacing;
+            }
+        }
+
+        .cc-button-container {
+            flex-direction: column;
+        }
+    }
+}
