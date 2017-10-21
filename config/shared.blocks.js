@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ROOT_PATH = path.resolve(__dirname, '..');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
-const entrypoint = () => entryPoint('./src/index.js');
+const entrypoint = () => entryPoint(['babel-polyfill', './src/index.js']);
 
 const output = () => () => ({
   output: {
