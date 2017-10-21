@@ -104,30 +104,6 @@
   font-style: italic;
   text-align: center;
   vertical-align: top;
-
-  &::after,
-  &::before {
-    content: '';
-    display: inline-block;
-    width: $visa-width/10;
-    height: $visa-width/10;
-    position: absolute;
-    top: 30%;
-    right: 71%;
-    transform: skew(8.6deg);
-  }
-
-  &::before {
-    background: $visa-yellow;
-    border-radius: 0 25% 0 0;
-    box-shadow: $visa-width/100 (-$visa-width/100) 0 $visa-white;
-  }
-
-  &::after {
-    background: white;
-    box-shadow: $visa-width/18 0 0 $visa-white inset, $visa-width/10 0 0 $visa-blue inset, -10px 0 0 $visa-white;
-    border-radius: 0 100% 0 0;
-  }
 }
 
 @media only screen and (max-width: $media-small) {

@@ -30,13 +30,9 @@ class AddNewCardView {
       $qs('.cc-submit-button', this.$form).disabled = this.hasErrors;
     });
 
-    $on(this.$cardNumber, 'keypress', (event) => {
-      if (event.which < 48 || event.which > 57) {
-        event.preventDefault();
-      }
-    });
-
     $on(this.$cardNumber, 'input', ({ target: { value, maxLength } }) => {
+      this.$cardNumber.value = value.replace(/\D/g, '');
+
       if (value.length > maxLength) {
         this.$cardNumber.value = value.slice(0, maxLength);
       }
