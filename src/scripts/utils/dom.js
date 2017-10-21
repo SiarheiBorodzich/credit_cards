@@ -22,9 +22,14 @@ export function $insertAfter(target, text) {
 
 export function $getFormValues(formElements) {
   const formValues = {};
+  const elements = [...formElements];
 
-  Object.entries(formElements).forEach(([key, { value }]) => {
-    formValues[key] = value;
+  elements.forEach((element) => {
+    if (!element.name) {
+      return;
+    }
+
+    formValues[element.name] = element.value;
   });
 
   return Object.assign(formValues, { id: generateId() });

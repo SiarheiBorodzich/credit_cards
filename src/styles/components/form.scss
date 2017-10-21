@@ -1,4 +1,5 @@
 .cc-add-new-card-container {
+  width: 100%;
   margin-bottom: $spacing-double;
 }
 
@@ -15,8 +16,9 @@
   border-radius: $border-radius;
   color: $grey-pebble;
   font-size: $font-medium;
-  padding: $spacing-one-and-half;
+  padding: $spacing;
   outline: 0;
+  width: 100%;
   transition: border-color .2s ease;
 
   &:focus {
