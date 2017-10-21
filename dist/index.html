@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Credit cards notebook</title>
+<link href="main.bundle.css" rel="stylesheet"></head>
+
+<body>
+  <div id='cc-app' class="cc-main-container">
+    <div class="cc-split-container cc-scrollable">
+      <h1>List of credit cards</h1>
+      <div class="cc-list-of-cards-container cc-column-container"></div>
+    </div>
+    <div class="cc-split-container cc-column-container">
+      <h1>Add new card</h1>
+      <div class="cc-add-new-card-container cc-column-container">
+        <form id="cc-add-new-card-form" class="cc-form" autocomplete="off">
+          <div class="cc-form-item">
+            <div class="cc-heading">
+              <label class="cc-label">Card number</label>
+            </div>
+            <input class="cc-card-number cc-input" placeholder="4444333322221111" name="number" type="number" maxlength="16">
+          </div>
+          <div class="cc-form-item">
+            <div class="cc-heading">
+              <label class="cc-label">Comment</label>
+            </div>
+            <textarea class="cc-textarea" placeholder="Add comment" maxlength="1024" name="comment"></textarea>
+          </div>
+          <div class="cc-button-container">
+            <button class="cc-submit-button cc-button" type="submit" value="Add new card" disabled>Add new card</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="cc-popup-container"></div>
+  </div>
+<script type="text/javascript" src="main.bundle.js"></script></body>
+
+</html>
