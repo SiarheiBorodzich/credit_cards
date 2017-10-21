@@ -1,26 +1,26 @@
-import { CreditCardsStore } from './stores';
+import { CreditCardsModel } from './models';
 import { AddNewCardView, ListOfCardsView, DeletePopupView } from './views';
-import { AddNewCardController, ListOfCardsController, DeleteCardPopupController } from './controllers';
+import { AddNewCardViewModel, ListOfCardsViewModel, DeleteCardPopupViewModel } from './view-models';
 
 class App {
-    constructor() {
-        this.initStores();
-        this.initControllers();
-    }
+  constructor() {
+    this.initModels();
+    this.initViewModels();
+  }
 
-    static init() {
-        new App();
-    }
+  static init() {
+    return new App();
+  }
 
-    initStores() {
-        this.creditCardStore = CreditCardsStore.create();
-    }
+  initModels() {
+    this.creditCardModel = new CreditCardsModel();
+  }
 
-    initControllers() {
-        new ListOfCardsController(new ListOfCardsView(), this.creditCardStore);
-        new AddNewCardController(new AddNewCardView(), this.creditCardStore);
-        new DeleteCardPopupController(new DeletePopupView(), this.creditCardStore);
-    }
+  initViewModels() {
+    this.listOfCardsViewModel = new ListOfCardsViewModel(new ListOfCardsView(), this.creditCardModel);
+    this.addNewCardViewModel = new AddNewCardViewModel(new AddNewCardView(), this.creditCardModel);
+    this.deleteCardPopupViewModel = new DeleteCardPopupViewModel(new DeletePopupView(), this.creditCardModel);
+  }
 }
 
 export default App;

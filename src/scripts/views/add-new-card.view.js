@@ -2,80 +2,80 @@ import { $qs, $on, $getFormValues, $insertAfter, $remove, escapeForHTML } from '
 import { validateCard, getCardInfo } from '../services';
 
 class AddNewCardView {
-    constructor() {
+  constructor() {
+    this.hasErrors = false;
+    this.$form = $qs('#cc-add-new-card-form');
+    this.$cardNumber = $qs('.cc-card-number', this.$form);
+
+    this.attachEventListeners();
+  }
+
+  attachEventListeners() {
+    $on(this.$cardNumber, 'blur', ({ target }) => {
+      const validationMessage = validateCard(target.value);
+
+      if (!this.hasErrors && validationMessage) {
+        $insertAfter(this.$cardNumber, this.renderValidationMessage(validationMessage));
+        this.$cardNumber.classList.add('cc-error');
+        this.hasErrors = true;
+      } else if (this.hasErrors && validationMessage) {
+        this.clearValidationMessage();
+        $insertAfter(this.$cardNumber, this.renderValidationMessage(validationMessage));
+      } else {
+        this.clearValidationMessage();
+        this.$cardNumber.classList.remove('cc-error');
         this.hasErrors = false;
-        this.$form = $qs('#cc-add-new-card-form');
-        this.$cardNumber = $qs('.cc-card-number', this.$form);
+      }
 
-        this.attachEventListeners();
-    }
+      $qs('.cc-submit-button', this.$form).disabled = this.hasErrors;
+    });
 
-    attachEventListeners() {
-        $on(this.$cardNumber, 'blur', ({ target }) => {
-            const validationMessage = validateCard(target.value);
+    $on(this.$cardNumber, 'keypress', (event) => {
+      if (event.which < 48 || event.which > 57) {
+        event.preventDefault();
+      }
+    });
 
-            if (!this.hasErrors && validationMessage) {
-                $insertAfter(this.$cardNumber, this.renderValidationMessage(validationMessage));
-                this.$cardNumber.classList.add('cc-error');
-                this.hasErrors = true;
-            } else if (this.hasErrors && validationMessage) {
-                this.clearValidationMessage();
-                $insertAfter(this.$cardNumber, this.renderValidationMessage(validationMessage));
-            } else {
-                this.clearValidationMessage();
-                this.$cardNumber.classList.remove('cc-error');
-                this.hasErrors = false;
-            }
+    $on(this.$cardNumber, 'input', ({ target: { value, maxLength } }) => {
+      if (value.length > maxLength) {
+        this.$cardNumber.value = value.slice(0, maxLength);
+      }
+    });
+  }
 
-            $qs('.cc-submit-button', this.$form).disabled = this.hasErrors;
-        });
+  clearValidationMessage() {
+    $remove('.cc-validation-message', this.$form);
+  }
 
-        $on(this.$cardNumber, 'keypress', (event) => {
-            if (event.which < 48 || event.which > 57){
-                event.preventDefault();
-            }
-        });
+  resetForm() {
+    $qs('.cc-submit-button', this.$form).disabled = true;
+    this.$form.reset();
+  }
 
-        $on(this.$cardNumber, 'input', ({ target: { value, maxLength } }) => {
-            if (value.length > maxLength) {
-                this.$cardNumber.value = value.slice(0, maxLength);
-            }
-        });
-    }
+  bindAddCard(handler) {
+    $on(this.$form, 'submit', (event) => {
+      event.preventDefault();
+      const formValues = $getFormValues(event.target.elements);
+      const { type, niceType } = getCardInfo(formValues.number);
 
-    clearValidationMessage() {
-        $remove('.cc-validation-message', this.$form);
-    }
+      Object.assign(formValues, {
+        type,
+        niceType,
+      });
 
-    resetForm() {
-        $qs('.cc-submit-button', this.$form).disabled = true;
-        this.$form.reset();
-    }
+      handler(formValues);
 
-    bindAddCard(handler) {
-        $on(this.$form, 'submit', (event) => {
-            event.preventDefault();
-            const formValues = $getFormValues(event.target.elements);
-            const { type, niceType } = getCardInfo(formValues.number);
+      this.resetForm();
+    });
+  }
 
-            Object.assign(formValues, {
-                type,
-                niceType,
-            });
-
-            handler(formValues);
-
-            this.resetForm();
-        });
-    }
-
-    renderValidationMessage(message) {
-        return `
-            <span class="cc-validation-message">
-                ${escapeForHTML(message)}
-            </span>
-        `;
-    }
+  renderValidationMessage(message) {
+    return `
+      <span class="cc-validation-message">
+        ${escapeForHTML(message)}
+      </span>
+    `;
+  }
 }
 
 export default AddNewCardView;

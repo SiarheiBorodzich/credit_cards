@@ -4,41 +4,41 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const prodScssToCss = () => () => ({
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true,
-                        },
-                    }, {
-                        loader: 'sass-loader',
-                    }, {
-                        loader: 'resolve-url-loader',
-                    }],
-                }),
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: 'css-loader',
+            options: {
+              minimize: true,
             },
-        ]
-    },
-    plugins: [
-        new ExtractTextPlugin({
-            filename: '[name].bundle.css',
+          }, {
+            loader: 'sass-loader',
+          }, {
+            loader: 'resolve-url-loader',
+          }],
         }),
+      },
     ],
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: '[name].bundle.css',
+    }),
+  ],
 });
 
 const uglifyJs = () => () => ({
-    plugins: [
-        new UglifyJSPlugin(),
-    ],
+  plugins: [
+    new UglifyJSPlugin(),
+  ],
 });
 
 module.exports = createConfig([
-    basicConfig(),
-    prodScssToCss(),
-    uglifyJs(),
+  basicConfig(),
+  prodScssToCss(),
+  uglifyJs(),
 ]);

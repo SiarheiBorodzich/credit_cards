@@ -4,7 +4,7 @@
   "description": "Notebook for credit cards",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --devtool eval-source-map --progress --colors --config ./config/webpack.development.config.js",
+    "dev": "webpack-dev-server -d --progress --colors --config ./config/webpack.development.config.js",
     "prod": "NODE_ENV=production webpack -p --config ./config/webpack.production.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
