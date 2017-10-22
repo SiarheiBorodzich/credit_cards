@@ -22,6 +22,16 @@ class ListOfCardsView {
     $remove(`[data-id='${id}']`, this.$listOfCardsContainer);
   }
 
+  replaceWith(getTemplate) {
+    this.$listOfCardsContainer.innerHTML = getTemplate();
+  }
+
+  renderEmptyCardList() {
+    return `
+      <div class="cc-empty-card-list">Credit cards list is empty</div>
+    `;
+  }
+
   renderCard(card) {
     const comment = card.comment ?
       `<p class="cc-card-comment"><i>Comment:</i> ${escapeForHTML(card.comment)}</p>` :
@@ -38,9 +48,13 @@ class ListOfCardsView {
   }
 
   render(cards) {
+    const template = !cards.length ?
+      this.renderEmptyCardList() :
+      assembleTemplate(cards, this.renderCard);
+
     $insertInto(
       this.$listOfCardsContainer,
-      assembleTemplate(cards, this.renderCard),
+      template,
     );
   }
 }

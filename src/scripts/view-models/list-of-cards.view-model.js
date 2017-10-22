@@ -16,8 +16,17 @@ class ListOfCardsViewModel {
   }
 
   initSubscribers() {
-    this.model.subscribe(CARD_ADDED, card => this.view.appendCard(card));
-    this.model.subscribe(CARD_REMOVED, id => this.view.removeCard(id));
+    this.model.subscribe(CARD_ADDED, (card, hadCards) => {
+      hadCards ?
+        this.view.appendCard(card) :
+        this.view.replaceWith(() => this.view.renderCard(card));
+    });
+
+    this.model.subscribe(CARD_REMOVED, (id, hasCards) => {
+      hasCards ?
+        this.view.removeCard(id) :
+        this.view.replaceWith(() => this.view.renderEmptyCardList());
+    });
   }
 
   bindHandlers() {

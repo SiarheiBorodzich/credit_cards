@@ -16,18 +16,19 @@ class CreditCardsModel extends BaseModel {
 
   addCreditCard(card) {
     const cards = this.getCreditCards();
+    const hadCards = !!cards.length;
 
     cards.push(card);
     this.setCreditCards(cards);
 
-    this.emit(CARD_ADDED, card);
+    this.emit(CARD_ADDED, card, hadCards);
   }
 
   removeCreditCard(id) {
     const cards = this.getCreditCards().filter(c => c.id !== id);
     this.setCreditCards(cards);
 
-    this.emit(CARD_REMOVED, id);
+    this.emit(CARD_REMOVED, id, !!cards.length);
   }
 
   requestCreditCardRemove(id) {

@@ -56,6 +56,11 @@ h2 {
 }
 
 @media only screen and (max-width: $media-small) {
+  h1 {
+    font-size: $font-large;
+    margin: $spacing;
+  }
+
   .cc-main-container {
     flex-direction: column;
   }
