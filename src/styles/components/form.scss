@@ -61,6 +61,7 @@
 .cc-button-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cc-button {
@@ -70,7 +71,7 @@
   height: $height-button;
   line-height: $height-button;
   padding: 0 6rem;
-  margin: 0 1rem;
+  margin: $spacing-half $spacing;
   font-size: $font-small;
   color: $white;
   cursor: pointer;
