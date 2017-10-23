@@ -1,20 +1,21 @@
 .cc-overlay {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, .9);
 
   .cc-popup {
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     padding: $spacing-double;
     background: $white;
     border-radius: $border-radius;
     width: 40%;
-    position: relative;
-    top: 35%;
-    margin: 0 auto;
-    transition: all 5s ease-in-out;
 
     .cc-message {
       font-size: $font-medium;
